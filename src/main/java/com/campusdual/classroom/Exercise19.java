@@ -12,18 +12,18 @@ public class Exercise19 {
             sb.append(stringTriMatrixRow(intArrayTri, i));
             sb.append("\n");
         }
-        sb.delete(sb.length()-1, sb.length());
+        sb.delete(sb.length() - 1, sb.length());
         return sb.toString();
 
     }
 
     private static String stringTriMatrixRow(int[][][] intArrayTri, int row) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < intArrayTri.length-1; i++){
+        for (int i = 0; i < intArrayTri.length - 1; i++) {
             sb.append(getUnidimensionalString(intArrayTri[i][row]));
             sb.append("   ");
         }
-        sb.append(getUnidimensionalString(intArrayTri[intArrayTri.length-1][row]));
+        sb.append(getUnidimensionalString(intArrayTri[intArrayTri.length - 1][row]));
 
         return sb.toString();
     }
@@ -33,20 +33,16 @@ public class Exercise19 {
     }
 
     public static String getTridimensionalString(int[][][] intArrayTri) {
-        int[][] flatMatrix = flatTridimensionalArray(intArrayTri);
-        return getTridimensionalString(intArrayTri, flatMatrix);
+        return getTridimensionalString(intArrayTri, flatTridimensionalArray(intArrayTri));
     }
 
     // recibe un array tridimensional de tipo int y devolverá un array bidimensional de tipo int
     public static int[][] flatTridimensionalArray(int[][][] intArrayTri) {
-        int rows = intArrayTri[0].length;
-        int columns = intArrayTri[0][0].length;
-
-        int [][] arrayTridimensional = new int[rows][columns];
+        int[][] arrayTridimensional = new int[intArrayTri[0].length][intArrayTri[0][0].length];
 
         for (int i = 0; i < intArrayTri.length; i++) {
-            for (int j = 0; j < rows; j++) {
-                for (int k = 0; k < columns; k++) {
+            for (int j = 0; j < intArrayTri[0].length; j++) {
+                for (int k = 0; k < intArrayTri[0][0].length; k++) {
                     arrayTridimensional[j][k] += intArrayTri[i][j][k];
                 }
             }
@@ -57,37 +53,35 @@ public class Exercise19 {
 
     // recibe un array bidimensional e invoca a stringFlatMatrixRow(), pasándole dicho array bidimensional y un entero correspondiente a cada uno de los elementos de su primera dimensión
     public static String getBidimensionalString(int[][] intArrayBi) {
-        StringBuilder arrayBidimensional = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < intArrayBi.length; i++) {
-            arrayBidimensional.append(stringFlatMatrixRow(intArrayBi, i)); //para que las filas sean un string
+            sb.append(stringFlatMatrixRow(intArrayBi, i)); //para que las filas sean un string
 
-            if (i < intArrayBi.length -1) {
-                arrayBidimensional.append("\n");
+            if (i < intArrayBi.length - 1) {
+                sb.append("\n");
             }
         }
-        return arrayBidimensional.toString();
+        return sb.toString();
     }
-
 
     // recorrer el array unidimensional de tipo entero y devolver un String único compuesto por los elementos del array de tipo int
     public static String getUnidimensionalString(int[] uniArray) {
-        StringBuilder arrayUnidimensional = new StringBuilder();
-
+        StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < uniArray.length; i++) {
-            arrayUnidimensional.append(uniArray[i]);
+            sb.append(uniArray[i]);
 
             if (i < uniArray.length - 1) {
-                arrayUnidimensional.append(" ");
+                sb.append(" ");
             }
         }
-        return arrayUnidimensional.toString();
+        return sb.toString();
     }
 
     // Array unidimensional de tipo entero e inicializarlo
     public static int[] createAndPopulateUnidimensionalArray(int columns) {
-        int [] uniArray = new int[columns];
+        int[] uniArray = new int[columns];
 
         for (int i = 0; i < columns; i++) {
             uniArray[i] = i + 1;
@@ -98,7 +92,7 @@ public class Exercise19 {
 
     // Array bidimensional de tipo entero e inicializarlo
     public static int[][] createAndPopulateBidimensionalArray(int rows, int columns) {
-        int [][] intArrayBi = new int[rows][columns];
+        int[][] intArrayBi = new int[rows][columns];
 
         int contador = 1;
 
@@ -112,7 +106,7 @@ public class Exercise19 {
 
     // Array tridimensional de tipo entero e inicializarlo
     public static int[][][] createAndPopulateTridimensionalArray(int depth, int rows, int columns) {
-        int [][][] intArrayTri = new int[depth][rows][columns];
+        int[][][] intArrayTri = new int[depth][rows][columns];
 
         int contador = 1;
 
