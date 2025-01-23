@@ -49,6 +49,24 @@ public class Exercise19 {
         }
         return arrayTridimensional;
 
+        /*
+        ALTERNATIVA con variables para facilitar la lectura
+
+        int depth = intArrayTri.length
+        int rows = intArrayTri[0].length
+        int columns = intArrayTri[0][0].length
+
+          int[][] flattenedArray = new int[rows][columns];
+
+            for (int i = 0; i < depth; i++) {
+                for (int j = 0; j < rows; j++) {
+                    for (int k = 0; k < columns; k++) {
+                        flattenedArray[j][k] += intArrayTri[i][j][k];
+                    }
+                }
+            }
+        return flattenedArray;
+        */
     }
 
     // recibe un array bidimensional e invoca a stringFlatMatrixRow(), pasándole dicho array bidimensional y un entero correspondiente a cada uno de los elementos de su primera dimensión
@@ -99,6 +117,9 @@ public class Exercise19 {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 intArrayBi[i][j] = contador++;
+
+                //ALTERNATIVA sin la variable
+                //array[i][j] = (i * columns) + j + 1;
             }
         }
         return intArrayBi;
@@ -114,6 +135,9 @@ public class Exercise19 {
             for (int j = 0; j < rows; j++) {
                 for (int k = 0; k < columns; k++) {
                     intArrayTri[i][j][k] = contador++;
+
+                    //ALTERNATIVA sin la variable
+                    //array[i][j][k] = (i * rows * columns) + (j * columns) + k + 1;
                 }
             }
         }
